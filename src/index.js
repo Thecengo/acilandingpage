@@ -36,7 +36,7 @@ ReactDOM.render(
         path="/Kurumsal"
         component={Kurumsal}/>
       
-      <Redirect to="/index" />
+      <Redirect to="/landing-page" />
     </Switch>
   </BrowserRouter>,
   document.getElementById("root")
