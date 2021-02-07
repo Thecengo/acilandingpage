@@ -1,4 +1,3 @@
-import { create } from 'nouislider';
 import React, { Component } from 'react';
 
 class Uploader extends Component {

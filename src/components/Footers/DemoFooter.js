@@ -1,5 +1,4 @@
 import React from "react";
-import { useHistory } from "react-router";
 
 // reactstrap components
 import { Row, Container } from "reactstrap";
