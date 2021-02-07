@@ -44,6 +44,9 @@
       "last 1 safari version"
     ]
   },
+  "engines": {
+    "node": "10.x"
+  },
   "optionalDependencies": {
     "typescript": "3.9.5"
   },
