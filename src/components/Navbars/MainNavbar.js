@@ -73,7 +73,7 @@ function MainNavbar() {
         >
           <Nav navbar>
             <NavItem>
-              <NavLink href="../views/examples/LandingPage">
+              <NavLink href="/landing-page">
                 <i className="nc-icon nc-layout-11" /> Anasayfa
               </NavLink>
             </NavItem>

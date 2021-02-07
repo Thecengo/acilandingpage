@@ -21,8 +21,12 @@ import {
 import LandingPageHeader from "components/Headers/LandingPageHeader.js";
 import DemoFooter from "components/Footers/DemoFooter.js";
 import MainNavbar from "components/Navbars/MainNavbar";
+import { useHistory } from "react-router";
+import Iletisim from "./Iletisim";
 
 function LandingPage() {
+  const history = useHistory();
+
   document.documentElement.classList.remove("nav-open");
   React.useEffect(() => {
     document.body.classList.add("profile-page");
@@ -30,6 +34,7 @@ function LandingPage() {
       document.body.classList.remove("profile-page");
     };
   });
+  
   return (
     <>
       <MainNavbar />
@@ -39,25 +44,24 @@ function LandingPage() {
           <Container>
             <Row>
               <Col className="ml-auto mr-auto" md="8">
-                <h2 className="title">Let's talk product</h2>
+                <h2 className="title">Bizim hakkımızda konuşalım!!</h2>
                 <h5 className="description">
-                  This is the paragraph where you can write more details about
-                  your product. Keep you user engaged by providing meaningful
-                  information. Remember that by this time, the user is curious,
-                  otherwise he wouldn't scroll to get here. Add a button if you
-                  want the user to see more.
+                  Uzman eğitim kadromuzla sizleri geleceğe hazırlıyor ve aynı zamanda
+                  <em> bakış <strong>açınızı</strong> değiştiriyoruz</em> .
                 </h5>
                 <br />
                 <Button
                   className="btn-round"
                   color="info"
-                  href="#pablo"
-                  onClick={(e) => e.preventDefault()}
+                  onClick={() => history.push("/kurumsal")}
                 >
-                  See Details
+                  Detayları Gör
                 </Button>
               </Col>
             </Row>
+            <br />
+            <br />
+            <h4 className="info-title">Size sunduklarımız</h4>
             <br />
             <br />
             <Row>
@@ -67,13 +71,13 @@ function LandingPage() {
                     <i className="nc-icon nc-album-2" />
                   </div>
                   <div className="description">
-                    <h4 className="info-title">Beautiful Gallery</h4>
+                    <h4 className="info-title">Eğlenceli Eğitim Ortamı</h4>
                     <p className="description">
-                      Spend your time generating new ideas. You don't have to
-                      think of implementing.
+                      Eğlenirken öğrenme fırsatını burada yakalayacaksınız.
+                      Hem eğlenecek hem de öğreneceksiniz.
                     </p>
                     <Button className="btn-link" color="info" href="#pablo">
-                      See more
+                      Daha fazlası
                     </Button>
                   </div>
                 </div>
@@ -84,13 +88,13 @@ function LandingPage() {
                     <i className="nc-icon nc-bulb-63" />
                   </div>
                   <div className="description">
-                    <h4 className="info-title">New Ideas</h4>
+                    <h4 className="info-title">Yenilikçi Fikirler</h4>
                     <p>
-                      Larger, yet dramatically thinner. More powerful, but
-                      remarkably power efficient.
+                      Bilimsel yöntemleri takip ederek modern çağı yakalabiliyoruz ve
+                      değişen dünyaya uyum sağlıyoruz.
                     </p>
                     <Button className="btn-link" color="info" href="#pablo">
-                      See more
+                      Daha fazlası
                     </Button>
                   </div>
                 </div>
@@ -101,13 +105,13 @@ function LandingPage() {
                     <i className="nc-icon nc-chart-bar-32" />
                   </div>
                   <div className="description">
-                    <h4 className="info-title">Statistics</h4>
+                    <h4 className="info-title">Istatistikler</h4>
                     <p>
-                      Choose from a veriety of many colors resembling sugar
-                      paper pastels.
+                      Uzman eğitim kadromuzla başarıdan başarıya koşuyoruz ve 
+                      bu koşuda sizleri yalnız bırakmıyoruz.
                     </p>
                     <Button className="btn-link" color="info" href="#pablo">
-                      See more
+                      Daha fazlası
                     </Button>
                   </div>
                 </div>
@@ -118,13 +122,13 @@ function LandingPage() {
                     <i className="nc-icon nc-sun-fog-29" />
                   </div>
                   <div className="description">
-                    <h4 className="info-title">Delightful design</h4>
+                    <h4 className="info-title">Sağlam Temeller Atıyoruz</h4>
                     <p>
-                      Find unique and handmade delightful designs related items
-                      directly from our sellers.
+                      Eğitim modelimizle geleceğimizi şekillendiriyor. 
+                      Asla yıkılmayacak temeller atıyoruz.
                     </p>
                     <Button className="btn-link" color="info" href="#pablo">
-                      See more
+                      Daha fazlası
                     </Button>
                   </div>
                 </div>
@@ -132,216 +136,121 @@ function LandingPage() {
             </Row>
           </Container>
         </div>
-        <div className="section section-dark text-center">
+        <div className="section section-gray text-center">
           <Container>
-            <h2 className="title">Let's talk about us</h2>
+            <h2 className="title">Görüşler</h2>
             <Row>
               <Col md="4">
                 <Card className="card-profile card-plain">
-                  <div className="card-avatar">
-                    <a href="#pablo" onClick={(e) => e.preventDefault()}>
-                      <img
-                        alt="..."
-                        src={require("assets/img/faces/clem-onojeghuo-3.jpg")}
-                      />
-                    </a>
-                  </div>
                   <CardBody>
                     <a href="#pablo" onClick={(e) => e.preventDefault()}>
                       <div className="author">
-                        <CardTitle tag="h4">Henry Ford</CardTitle>
-                        <h6 className="card-category">Product Manager</h6>
+                        <CardTitle tag="h4">Nermin Aydın Şahin</CardTitle>
                       </div>
                     </a>
                     <p className="card-description text-center">
-                      Teamwork is so important that it is virtually impossible
-                      for you to reach the heights of your capabilities or make
-                      the money that you want without becoming very good at it.
+                    Bu kadar özveriyle çalışan başka personel var mı bilmiyorum. 
+                    Çocuklarımızı kendi çocukları gibi benimseyip kucaklayan
+                     öğretmen ve yönetici kadrosuyla gerçekten bize aile hissi veren muhteşem bir kurum.
+                    İnsan için güvenden daha değerli ne olabilir ki? 
+                    Bize kattığınız her şey için en büyük teşekkürlerimi size borç bilirim. 
+                                           TEŞEKKÜRLER
                     </p>
                   </CardBody>
                   <CardFooter className="text-center">
-                    <Button
-                      className="btn-just-icon btn-neutral"
-                      color="link"
-                      href="#pablo"
-                      onClick={(e) => e.preventDefault()}
-                    >
-                      <i className="fa fa-twitter" />
-                    </Button>
-                    <Button
-                      className="btn-just-icon btn-neutral ml-1"
-                      color="link"
-                      href="#pablo"
-                      onClick={(e) => e.preventDefault()}
-                    >
-                      <i className="fa fa-google-plus" />
-                    </Button>
-                    <Button
-                      className="btn-just-icon btn-neutral ml-1"
-                      color="link"
-                      href="#pablo"
-                      onClick={(e) => e.preventDefault()}
-                    >
-                      <i className="fa fa-linkedin" />
-                    </Button>
                   </CardFooter>
                 </Card>
               </Col>
               <Col md="4">
                 <Card className="card-profile card-plain">
-                  <div className="card-avatar">
-                    <a href="#pablo" onClick={(e) => e.preventDefault()}>
-                      <img
-                        alt="..."
-                        src={require("assets/img/faces/joe-gardner-2.jpg")}
-                      />
-                    </a>
-                  </div>
                   <CardBody>
                     <a href="#pablo" onClick={(e) => e.preventDefault()}>
                       <div className="author">
-                        <CardTitle tag="h4">Sophie West</CardTitle>
-                        <h6 className="card-category">Designer</h6>
+                        <CardTitle tag="h4">Filiz Özdemir</CardTitle>
                       </div>
                     </a>
                     <p className="card-description text-center">
-                      A group becomes a team when each member is sure enough of
-                      himself and his contribution to praise the skill of the
-                      others. No one can whistle a symphony. It takes an
-                      orchestra to play it.
+                    Hiç bir an pişmanlık duymadan gözüm arkada kalmadan çocuğumu teslim ettiğim bir kurum
+                    .Çocuğum güven ,mutluluk içinde eğitimini en güzel şekilde alıyor.
+                    Tüm derslerde ellerinden gelenin en iyisini gerçekleştirmek için çaba sarf ediyorlar.
+                    Çan' dan Biga' ya gidiyor öğrencim 1 saat erken gidip 1 saat geç geliyor.Düşününce değiyor
                     </p>
                   </CardBody>
                   <CardFooter className="text-center">
-                    <Button
-                      className="btn-just-icon btn-neutral"
-                      color="link"
-                      href="#pablo"
-                      onClick={(e) => e.preventDefault()}
-                    >
-                      <i className="fa fa-twitter" />
-                    </Button>
-                    <Button
-                      className="btn-just-icon btn-neutral ml-1"
-                      color="link"
-                      href="#pablo"
-                      onClick={(e) => e.preventDefault()}
-                    >
-                      <i className="fa fa-google-plus" />
-                    </Button>
-                    <Button
-                      className="btn-just-icon btn-neutral ml-1"
-                      color="link"
-                      href="#pablo"
-                      onClick={(e) => e.preventDefault()}
-                    >
-                      <i className="fa fa-linkedin" />
-                    </Button>
                   </CardFooter>
                 </Card>
               </Col>
               <Col md="4">
                 <Card className="card-profile card-plain">
-                  <div className="card-avatar">
-                    <a href="#pablo" onClick={(e) => e.preventDefault()}>
-                      <img
-                        alt="..."
-                        src={require("assets/img/faces/erik-lucatero-2.jpg")}
-                      />
-                    </a>
-                  </div>
                   <CardBody>
                     <a href="#pablo" onClick={(e) => e.preventDefault()}>
                       <div className="author">
-                        <CardTitle tag="h4">Robert Orben</CardTitle>
-                        <h6 className="card-category">Developer</h6>
+                        <CardTitle tag="h4">Ömer Yıldız</CardTitle>
                       </div>
                     </a>
                     <p className="card-description text-center">
-                      The strength of the team is each individual member. The
-                      strength of each member is the team. If you can laugh
-                      together, you can work together, silence isn’t golden,
-                      it’s deadly.
+                    Eğitim ve öğretim konusunda yılların birikimi ile  gerçek deneyime sahip 
+                    yönetim ekibi ile nitelikli öğretmen kadrosunun bir araya geldiği BİGA da bulunan özel okulumuz.
                     </p>
                   </CardBody>
                   <CardFooter className="text-center">
-                    <Button
-                      className="btn-just-icon btn-neutral"
-                      color="link"
-                      href="#pablo"
-                      onClick={(e) => e.preventDefault()}
-                    >
-                      <i className="fa fa-twitter" />
-                    </Button>
-                    <Button
-                      className="btn-just-icon btn-neutral ml-1"
-                      color="link"
-                      href="#pablo"
-                      onClick={(e) => e.preventDefault()}
-                    >
-                      <i className="fa fa-google-plus" />
-                    </Button>
-                    <Button
-                      className="btn-just-icon btn-neutral ml-1"
-                      color="link"
-                      href="#pablo"
-                      onClick={(e) => e.preventDefault()}
-                    >
-                      <i className="fa fa-linkedin" />
-                    </Button>
                   </CardFooter>
                 </Card>
               </Col>
             </Row>
           </Container>
         </div>
-        <div className="section landing-section">
+
+        <div className="section section-dark-blue text-center">
           <Container>
+            <h2 className="title">Kademelerimiz</h2>
             <Row>
-              <Col className="ml-auto mr-auto" md="8">
-                <h2 className="text-center">Keep in touch?</h2>
-                <Form className="contact-form">
-                  <Row>
-                    <Col md="6">
-                      <label>Name</label>
-                      <InputGroup>
-                        <InputGroupAddon addonType="prepend">
-                          <InputGroupText>
-                            <i className="nc-icon nc-single-02" />
-                          </InputGroupText>
-                        </InputGroupAddon>
-                        <Input placeholder="Name" type="text" />
-                      </InputGroup>
-                    </Col>
-                    <Col md="6">
-                      <label>Email</label>
-                      <InputGroup>
-                        <InputGroupAddon addonType="prepend">
-                          <InputGroupText>
-                            <i className="nc-icon nc-email-85" />
-                          </InputGroupText>
-                        </InputGroupAddon>
-                        <Input placeholder="Email" type="text" />
-                      </InputGroup>
-                    </Col>
-                  </Row>
-                  <label>Message</label>
-                  <Input
-                    placeholder="Tell us your thoughts and feelings..."
-                    type="textarea"
-                    rows="4"
-                  />
-                  <Row>
-                    <Col className="ml-auto mr-auto" md="4">
-                      <Button className="btn-fill" color="danger" size="lg">
-                        Send Message
-                      </Button>
-                    </Col>
-                  </Row>
-                </Form>
+              <Col md="4">
+                <Card className="card-just-text">
+                  <CardBody>
+                    <a href="#pablo" onClick={(e) => e.preventDefault()}>
+                      <div className="author">
+                        <CardTitle tag="h4">Ortaokul</CardTitle>
+                      </div>
+                    </a>
+                    <p className="card-description text-center">
+                       5 - 6 - 7  ve 8. sınıf öğreniclerimize hizmet veriyoruz.
+                    </p>
+                  </CardBody>
+                </Card>
+              </Col>
+              <Col md="4">
+                <Card className="card-just-text">
+                  <CardBody>
+                    <a href="#pablo" onClick={(e) => e.preventDefault()}>
+                      <div className="author">
+                        <CardTitle tag="h4">Fen Lisesi</CardTitle>
+                      </div>
+                    </a>
+                    <p className="card-description text-center">
+                     Biga' nın ilk özel Fen Lisesi olarak 9, 10, 11, 12. sınıf öğrencilerimize hizmet vermekteyiz.
+                    </p>
+                  </CardBody>
+                </Card>
+              </Col>
+              <Col md="4">
+                <Card className="card-just-text">
+                  <CardBody>
+                    <a href="#pablo" onClick={(e) => e.preventDefault()}>
+                      <div className="author">
+                        <CardTitle tag="h4">Anadolu Lisesi</CardTitle>
+                      </div>
+                    </a>
+                    <p className="card-description text-center">
+                         9, 10, 11, 12. sınıf öğrencilerimize hizmet vermekteyiz.
+                    </p>
+                  </CardBody>
+                </Card>
               </Col>
             </Row>
           </Container>
         </div>
+      <Iletisim/>
       </div>
       <DemoFooter />
     </>

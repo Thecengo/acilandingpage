@@ -1,12 +1,27 @@
-import React from "react";
+import React, { useState } from "react";
 import { useHistory } from 'react-router-dom';
 
 // reactstrap components
 import { Button, Container } from "reactstrap";
+import UncontrolledCarousel from "reactstrap/lib/UncontrolledCarousel";
 
 // core components
+const items = [
+  {
+    src: 'https://res.cloudinary.com/hatdjwqml/image/upload/v1612605778/mc2dj0stejwfm63dbrvp.jpg',
+    key: '1'
+  },
+  {
+    src: 'http://res.cloudinary.com/hatdjwqml/image/upload/c_mfit,h_528/v1612620503/r14ilth0lazmwromgxek.jpg',
+    key: '2'
+  },
+  {
+    src: 'https://res.cloudinary.com/hatdjwqml/image/upload/v1612691736/bzdu08gkapfmoeoe48da.jpg',
+    key: '5'
+  }
+];
 
-function LandingPageHeader() {
+const LandingPageHeader = (props) => {
   let pageHeader = React.createRef();
   const history = useHistory();
   React.useEffect(() => {
@@ -26,26 +41,25 @@ function LandingPageHeader() {
   return (
     <>
       <div
-        style={{
-          backgroundImage:
-            "url(" + require("assets/img/daniel-olahh.jpg") + ")",
-        }}
-        className="page-header"
+        //className="page-header"
         data-parallax={true}
         ref={pageHeader}
       >
-        <div className="filter" />
-        <Container>
-          <div className="motto text-center">
-            <h1>Example page</h1>
-            <h3>Start designing your landing page here.</h3>
-            <br />
-            <Button className="btn-round" color="neutral" type="button" onClick = {()=> history.push("/register-page")}outline>
-              Sınava Basvur
-            </Button>
-          </div>
-        </Container>
       </div>
+      <UncontrolledCarousel items={items} >
+        
+      </UncontrolledCarousel>
+      <div className="filter" />
+      <Container>
+        <div className="motto text-center">
+        <br></br>
+        <p><strong><em>Sende aramıza katılmak için hemen alttaki butona tıkla ve ilk adımı at</em></strong></p>
+        <Button className="btn-round" color="primary" type="button" onClick={() => history.push("/register-page")} outline>
+          Sınava Basvur
+         </Button>
+
+        </div>
+      </Container>
     </>
   );
 }

@@ -1,45 +1,47 @@
 import React from "react";
+import { useHistory } from "react-router";
 
 // reactstrap components
 import { Row, Container } from "reactstrap";
+import Button from "reactstrap/lib/Button";
 
 function DemoFooter() {
   return (
-    <footer className="footer footer-black footer-white">
+    <footer className="footer">
       <Container>
         <Row>
           <nav className="footer-nav">
             <ul>
-              <li>
-                <a
-                  href="https://www.creative-tim.com?ref=pkr-footer"
-                  target="_blank"
-                >
-                  Creative Tim
-                </a>
-              </li>
-              <li>
-                <a
-                  href="http://blog.creative-tim.com/?ref=pkr-footer"
-                  target="_blank"
-                >
-                  Blog
-                </a>
-              </li>
-              <li>
-                <a
-                  href="https://www.creative-tim.com/license?ref=pkr-footer"
-                  target="_blank"
-                >
-                  Licenses
-                </a>
-              </li>
+              <Button
+                className="btn-just-icon btn-primary"
+                color="link"
+                href="https://www.facebook.com/%C3%96zel-Biga-A%C3%A7%C4%B1-Koleji-298246874082356/?ref=page_internal"
+                //onClick={(e) => e.preventDefault()}
+              >
+                <i className="fa fa-facebook" />
+              </Button>
+              <Button
+                className="btn-just-icon btn-primary"
+                color="link"
+                href="https://www.facebook.com/%C3%96zel-Biga-A%C3%A7%C4%B1-Koleji-298246874082356/?ref=page_internal"
+                onClick={(e) => e.preventDefault()}
+              >
+                <i className="fa fa-google-plus" />
+              </Button>
+              <Button
+                className="btn-just-icon btn-primary"
+                color="link"
+                href="#pablo"
+                onClick={(e) => e.preventDefault()}
+              >
+                <i className="fa fa-linkedin" />
+              </Button>
             </ul>
           </nav>
           <div className="credits ml-auto">
             <span className="copyright">
-              © {new Date().getFullYear()}, made with{" "}
-              <i className="fa fa-heart heart" /> 
+              © {new Date().getFullYear()}, made with{" "} Biga Açı Koleji
+              <i className="fa fa-heart heart" />
             </span>
           </div>
         </Row>
