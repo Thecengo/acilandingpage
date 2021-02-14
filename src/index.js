@@ -12,18 +12,19 @@ import ProfilePage from "views/examples/ProfilePage.js";
 import RegisterPage from "views/examples/RegisterPage.js";
 import Kurumsal from "components/Headers/Kurumsal";
 import Uploader from "components/Uploader";
+import IletisimTab from "views/examples/IletisimTab";
 // others
 
 ReactDOM.render(
   <BrowserRouter>
     <Switch>
-       <Route
+      <Route
         path="/upload"
-        component = {Uploader}
+        component={Uploader}
       />
       <Route
         path="/landing-page"
-        component={LandingPage}/>
+        component={LandingPage} />
       <Route
         path="/profile-page"
         render={(props) => <ProfilePage {...props} />}
@@ -32,10 +33,14 @@ ReactDOM.render(
         path="/register-page"
         render={(props) => <RegisterPage {...props} />}
       />
-       <Route
+      <Route
         path="/Kurumsal"
-        component={Kurumsal}/>
-      
+        component={Kurumsal} />
+
+      <Route
+        path="/IletisimTab"
+        component={IletisimTab} />
+
       <Redirect to="/landing-page" />
     </Switch>
   </BrowserRouter>,

@@ -83,8 +83,8 @@ function MainNavbar() {
               </NavLink>
             </NavItem>
             <NavItem>
-              <NavLink href="#">
-                <i className="nc-icon nc-layout-11" /> İletişim
+              <NavLink href="/IletisimTab">
+                <i className="fa fa-phone" /> İletişim
               </NavLink>
             </NavItem>
           </Nav>

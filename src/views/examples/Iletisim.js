@@ -18,8 +18,8 @@ class Iletisim extends Component {
         this.state = {
             messages: [],
             name: '',
-            message: ' ',
-            email: ' '
+            message: '',
+            email: ''
         }
     }
 
@@ -35,7 +35,7 @@ class Iletisim extends Component {
         });
     }
     componentDidMount() {
-       
+
     }
     onChange = e => {
         const { name, value } = e.target;
@@ -60,7 +60,7 @@ class Iletisim extends Component {
                                                     <i className="nc-icon nc-single-02" />
                                                 </InputGroupText>
                                             </InputGroupAddon>
-                                            <Input placeholder="Name" type="text" name = "name"
+                                            <Input placeholder="Ad" type="text" name="name"
                                                 value={this.state.name} onChange={this.onChange} />
                                         </InputGroup>
                                     </Col>
@@ -72,7 +72,7 @@ class Iletisim extends Component {
                                                     <i className="nc-icon nc-email-85" />
                                                 </InputGroupText>
                                             </InputGroupAddon>
-                                            <Input placeholder="Email" type="text" name ="email"
+                                            <Input placeholder="Email" type="text" name="email"
                                                 value={this.state.email} onChange={this.onChange} />
                                         </InputGroup>
                                     </Col>
@@ -82,7 +82,7 @@ class Iletisim extends Component {
                                     placeholder="Düşüncelerinizi önemsiyoruz lütfen bize bir şeyler söyleyin..."
                                     type="textarea"
                                     rows="4"
-                                    name ="message"
+                                    name="message"
                                     value={this.state.message} onChange={this.onChange}
                                 />
                                 <Row>

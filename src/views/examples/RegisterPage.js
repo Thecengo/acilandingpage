@@ -6,8 +6,10 @@ import { Button, Card, Form, Input, Container, Row, Col } from "reactstrap";
 // core components
 import MainNavbar from "components/Navbars/MainNavbar";
 import StudentService from "components/services/StudentService";
+import SessionService from "components/services/SessionService";
 import * as alertify from 'alertifyjs';
 import 'alertifyjs/build/css/alertify.css';
+import SinavService from "components/services/SinavService";
 
 class RegisterPage extends React.Component {
 
@@ -17,35 +19,74 @@ class RegisterPage extends React.Component {
     this.state = {
       errors: [],
       students: [],
-      name: '',
+      name: ' ',
       telNo: ' ',
       schoolName: ' ',
-      sinif: '',
-      birthDate: '',
+      sinif: ' ',
       tcNo: ' ',
-      veliName: '',
-      veliTelNo: '',
-      err: ''
+      veliName: ' ',
+      veliTelNo: ' ',
+      sinavType: ' ',
+      session: ' ',
+      sessionOptions: [''],
+      sinavTypes: ['']
     }
     this.addStudents = this.addStudents.bind(this);
   }
-
   componentDidMount() {
     document.body.classList.add("register-page");
+    this.setState({
+      sessionOptions: [],
+      sinavTypes: []
+    })
+    let initialSinavType;
+    SinavService.getSinavTypes().then(res =>
+      res.data.map(data =>
+        this.setState(state => {
+          const sinavTypes = state.sinavTypes.concat(data)
+          if(!initialSinavType) {
+            initialSinavType = sinavTypes[0];
+            state.sinavType = initialSinavType;
+            this.getSessionsByType(initialSinavType);
+          }
+          console.log("initial type iç", initialSinavType)
+          console.log("sinav types", sinavTypes)
+          return { sinavTypes, }
+        })
+      )
+    )
+   
+    console.log("initial type", initialSinavType)
 
     return function cleanup() {
       document.body.classList.remove("register-page");
     };
   }
 
+  getSessionsByType = (type) => {
+    let initialSessionType;
+    SessionService.getSessionsBySinavType(type)
+    .then(res => {
+      res.data.map(data =>
+        this.setState(state => {
+          if (!initialSessionType) {
+            initialSessionType = data.startTime
+            state.session = initialSessionType
+          }
+          const sessionOptions = state.sessionOptions.concat(data.startTime)
+          return { sessionOptions, }
+        })
+      )
+    })
+  }
 
   addStudents = (e) => {
     this.setStatesToEmpty();
     e.preventDefault();
     let student = {
       name: this.state.name, telNo: this.state.telNo, schoolName: this.state.schoolName, sinif: this.state.sinif,
-      birthDate: this.state.birthDate,
-      tcNo: this.state.tcNo, veli: { name: this.state.veliName, telNo: this.state.veliTelNo }
+      tcNo: this.state.tcNo, sinavType: this.state.sinavType, sessionTime: this.state.session,
+      veli: { name: this.state.veliName, telNo: this.state.veliTelNo }
     };
     console.log(JSON.stringify(student));
     if (this.validateFields()) {
@@ -57,12 +98,11 @@ class RegisterPage extends React.Component {
     else {
       alertify.error('Bazı alanlar boş lütfen tüm alanları gözden geçiriniz');
     }
-    
   }
 
   validateFields = () => {
-    if (this.state.name === '' || this.state.schoolName === '' || this.state.birthDate === '' || this.state.sinif === ''
-      || this.state.tcNo === '' || this.state.veliName === '' || this.state.veliTelNo === '' || this.state.telNo === '') {
+    if (this.state.name === ' ' || this.state.schoolName === ' ' || this.state.sinif === ' '
+      || this.state.tcNo === ' ' || this.state.veliName === ' ' || this.state.veliTelNo === ' ' || this.state.telNo === ' ') {
       return false;
     }
     else {
@@ -71,12 +111,27 @@ class RegisterPage extends React.Component {
   }
 
   setStatesToEmpty = () => {
-    this.setState ({
-      name: '', telNo:'', schoolName: '', sinif: '', birthDate: '', tcNo: '', veliName: '', veliTelNo: ''
+    this.setState({
+      name: ' ', telNo: ' ', schoolName: ' ', sinif: ' ', tcNo: ' ', veliName: ' ', veliTelNo: ' '
     })
   }
+
   onChange = e => {
     const { name, value } = e.target;
+    if (name === 'sinavType') {
+      this.setState({
+        sessionOptions: []
+      })
+      SessionService.getSessionsBySinavType(value)
+        .then(res => {
+          res.data.map(data =>
+            this.setState(state => {
+              const sessionOptions = state.sessionOptions.concat(data.startTime)
+              return { sessionOptions, }
+            })
+          )
+        })
+    }
     if (value !== '') {
       this.setState({
         [name]: value
@@ -109,9 +164,20 @@ class RegisterPage extends React.Component {
                     <label>Sınıfı</label>
                     <Input placeholder="Sınıfı" name="sinif" type="text"
                       value={this.state.sinif} onChange={this.onChange} />
-                    <label>Doğum tarihi</label>
-                    <Input type="date" name="birthDate" id="birthday" placeholder="date placeholder"
-                      value={this.state.birthDate} onChange={this.onChange} />
+                    <label>Sınav tipi</label>
+                    <Input type="select" name="sinavType"
+                      value={this.state.sinavType} onChange={this.onChange} >
+                      {this.state.sinavTypes.map((sinav) => (
+                        <option value={sinav}>{sinav}</option>
+                      ))}
+                    </Input>
+                    <label>Oturum</label>
+                    <Input type="select" name="session"
+                      value={this.state.session} onChange={this.onChange} >
+                      {this.state.sessionOptions.map((option) => (
+                        <option value={option}>{option}</option>
+                      ))}
+                    </Input>
                     <label>TC Kimlik No</label>
                     <Input placeholder="TC Kimlik No" name="tcNo" type="text"
                       value={this.state.tcNo} onChange={this.onChange} />
