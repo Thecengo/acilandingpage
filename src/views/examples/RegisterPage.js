@@ -7,8 +7,7 @@ import { Button, Card, Form, Input, Container, Row, Col } from "reactstrap";
 import MainNavbar from "components/Navbars/MainNavbar";
 import StudentService from "components/services/StudentService";
 import SessionService from "components/services/SessionService";
-import * as alertify from 'alertifyjs';
-import 'alertifyjs/build/css/alertify.css';
+import Swal from 'sweetalert2'
 import SinavService from "components/services/SinavService";
 
 class RegisterPage extends React.Component {
@@ -91,12 +90,20 @@ class RegisterPage extends React.Component {
     console.log(JSON.stringify(student));
     if (this.validateFields()) {
       StudentService.createStudents(student).then(res => {
-        alertify.success(res.data.message);
+        Swal.fire(
+          'Harika!',
+           res.data.message,
+          'success'
+        )
         console.log(res)
       });
     }
     else {
-      alertify.error('Bazı alanlar boş lütfen tüm alanları gözden geçiriniz');
+      Swal.fire(
+        'Üzgünüz!',
+        'Bazı alanlar boş!! Lütfen tüm alanları gözden geçiriniz',
+        'error'
+      )
     }
   }
 
